@@ -1,0 +1,72 @@
+$main: #ffe200;
+
+.landing {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.titles {
+  position: relative;
+
+
+
+  .title {
+    display: flex;
+    font-size: 3em;
+    text-align: center;
+    justify-content: center;
+    align-items: baseline;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-50%) translateY(-50%);
+    transition: 0.3s;
+    transform-origin: right;
+
+    &:nth-of-type(1) {
+      transform: translateX(-50%) translateY(-50%);
+    }
+
+    &:nth-of-type(2) {
+      transform: translateX(-50%) translateY(-50%) scaleY(0);
+    }
+
+    &:nth-of-type(3) {
+      transform: translateX(-50%) translateY(-50%) rotateY(90deg);
+    }
+
+    &-sidy {
+      font-size: 2em;
+      margin: 0 0.2em;
+    }
+
+    @media 
+  }
+
+  &.extended {
+    .title {
+      &:nth-of-type(2) {
+        transform: translateX(-50%) translateY(50%) scaleY(1);
+      }
+    }
+  }
+
+  &.rotated {
+    .title {
+      &:nth-of-type(1) {
+        transform: translateX(-50%) translateY(-50%) rotateY(90deg);
+      }
+
+      &:nth-of-type(2) {
+        transform: translateX(-50%) translateY(50%) scaleY(1) rotateY(90deg);
+      }
+
+      &:nth-of-type(3) {
+        transform: translateX(-50%) translateY(-50%);
+      }
+    }
+  }
+}
