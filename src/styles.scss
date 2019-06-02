@@ -1,8 +1,25 @@
 @import 'reset';
 $main: #ffe200;
 body {
-  font-family: 'Merriweather Sans', sans-serif;
+  font-family: 'Catamaran', sans-serif;
   background-color: #121212;
   color: #f1f1f1;
   font-size: 12px;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+
+  &-track {
+    background: #121212;
+  }
+
+  &-thumb {
+    background: $main;
+  }
+
+  &-thumb:hover {
+    background: lighten($main, 20%);
+  }
 }

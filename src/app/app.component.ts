@@ -8,6 +8,9 @@ import {
   NavigationError,
   RouterOutlet
 } from '@angular/router';
+import smoothscroll from 'smoothscroll-polyfill';
+smoothscroll.polyfill();
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

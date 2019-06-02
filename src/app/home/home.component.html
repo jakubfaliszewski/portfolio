@@ -1,11 +1,7 @@
-<section class="landing">
-  <div class="titles" [class.extended]="titleEntrance==1" [class.rotated]="titleEntrance>1">
-    <h1 class="title">
-      oh,<span class="title-sidy">cześć</span>
-    </h1>
-    <h1 class="title">
-      nazywam się
-    </h1>
-    <h1 class="title">jakub <span class="title-sidy">faliszewski</span></h1>
-  </div>
-</section>
+<main class="main-content" [class.hidden]="entrance">
+  <section class="main-section" *ngFor="let w of works.all ; index as i" [id]="w.id">
+    <div [style.transform]="cursor.transformDistant"><h1 class="title" [style.transform]="'translateY('+titleTransform[i]+'px)'">{{w.title}}</h1></div>
+    <img class="background" src="../../assets/{{w.bg}}" alt="{{w.bg}} icon" [style.transform]="cursor.transformClose"/>
+    <button class="main-button" (click)="showWork(w.id)" [style.transform]="cursor.transformDistant"><img src="../../assets/arrow.png" /></button>
+  </section>
+</main>

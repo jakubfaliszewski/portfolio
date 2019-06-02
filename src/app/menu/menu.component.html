@@ -1,0 +1,21 @@
+<menu class="menu-container" [class.hidden]="entrance">
+  <div class="menu-title">
+    <p>Nazywam się</p>
+    <h1>Jakub Faliszewski</h1>
+  </div>
+  <footer class="footer">
+    <div class="footer-column">
+      <p class="footer-title">Realizacje</p>
+      <ul class="footer-list">
+        <li *ngFor="let w of works.all"><a (click)="moveTo(w.id)">{{w.title}}</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <p class="footer-title">Kontakt</p>
+      <ul class="footer-list">
+        <li>  <a href="mailto:jfaliszewski@interia.pl">jfaliszewski@interia.pl</a></li>
+        <li>  <a href="tel:+48790750992">790750992</a></li>
+      </ul>
+    </div>
+  </footer>
+</menu>
