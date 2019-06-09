@@ -1,12 +1,26 @@
-:host {
-  height: 100vh;
+@import '../../vars';
+
+
+.nopage {
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50%;
-  margin-left: 50%;
+  width: calc(100% - 500px);
+  margin-left: 500px;
   position: relative;
   flex-direction: column;
+
+  @media (max-width: $br-l) {
+    width: calc(100% - 420px);
+    margin-left: 420px;
+  }
+
+  @media (max-width: $br-m) {
+    width: 100%;
+    margin-left: 0;
+  }
+
   h2 {
     @media (min-width: 480px) {
       font-size: calc(12.5rem + ((1vw - 4.8px) * 8.3333));
@@ -16,7 +30,8 @@
       font-size: 320px;
     }
   }
-  p{
-     font-size: 3em;
+
+  p {
+    font-size: 3em;
   }
 }

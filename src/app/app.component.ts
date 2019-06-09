@@ -8,16 +8,22 @@ import {
   NavigationError,
   RouterOutlet
 } from '@angular/router';
+import { slider } from './animations';
+
 import smoothscroll from 'smoothscroll-polyfill';
 smoothscroll.polyfill();
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+  animations: [slider],
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   loading: boolean = true;
+  isHome: boolean = false;
+  menuVisible: boolean = false;
+
   constructor(private router: Router) {
     router.events.subscribe((event: RouterEvent) => {
       this.navigationInterceptor(event)
@@ -34,13 +40,13 @@ export class AppComponent {
 
     if (event instanceof NavigationStart) {
       this.loading = true
-      console.info('Loading component...');
+      this.menuVisible = false;
     }
     if (event instanceof NavigationEnd) {
       setTimeout(() => {
         this.loading = false;
+        this.isHome = this.router.routerState.snapshot.url == '/' || this.router.routerState.snapshot.url.startsWith('/#') ? true : false;
       }, 200);
-      console.info('Component loaded.');
     }
 
     if (event instanceof NavigationCancel) {

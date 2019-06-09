@@ -4,8 +4,11 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\home",
-    "\\src\\app\\menu"
+    "\\src\\app\\menu",
+    "\\src\\app\\page-not-found",
+    "\\src\\app\\project",
+    "\\src\\assets"
   ],
-  "SelectedNode": "\\src\\app\\menu\\menu.component.scss",
+  "SelectedNode": "\\src\\app\\works.ts",
   "PreviewInSolutionExplorer": false
 }

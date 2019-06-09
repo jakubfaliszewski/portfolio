@@ -1,9 +1,13 @@
-$main: #ffe200;
+@import '../../vars';
 
 .main {
 
   &-content {
     transition: 1.5s;
+
+    @media (max-width: $br-s) {
+     padding-top: 100px;
+    }
 
     &.hidden {
       transform: translateX(100%);
@@ -20,6 +24,36 @@ $main: #ffe200;
     position: relative;
     perspective: 1200px;
     flex-direction: column;
+
+    @media (max-width: $br-l) {
+      width: calc(100% - 420px);
+      margin-left: 420px;
+    }
+
+    @media (max-width: $br-m) {
+      width: 100%;
+      margin-left: 0;
+    }
+
+    @media (max-width: $br-s) {
+      min-height: 400px;
+      height: auto;
+    }
+
+    .about-desc {
+      font-size: 1.8em;
+      width: 280px;
+      text-align: right;
+      margin-left: auto;
+      padding: 30px 20px;
+      background: rgba(17, 17, 17, 0.50);
+      margin-top: -180px;
+
+      @media (max-width: $br-m) {
+        margin: 0px auto;
+        max-width: 100%;
+      }
+    }
   }
 
   &-button {
@@ -29,6 +63,12 @@ $main: #ffe200;
     background: $main;
     box-shadow: 0 0 20px black;
     position: relative;
+    z-index: 2;
+
+    @media (max-width: $br-s) {
+      width: 50px;
+      height: 50px;
+    }
 
     &:before {
       content: '';
@@ -41,16 +81,26 @@ $main: #ffe200;
       transition: 0.5s;
       background-color: $main;
       z-index: -1;
+
+      @media (max-width: $br-s) {
+        height: 50px;
+      }
     }
 
     &:hover {
       &:before {
         transform: scaleX(1);
       }
+
+      + .background {
+        opacity: 0.5;
+      }
     }
 
-    img {
-      width: 30px;
+    svg {
+      width: 40px;
+      height: auto;
+      transform: rotate(180deg);
     }
   }
 }
@@ -61,6 +111,7 @@ $main: #ffe200;
   max-width: 80%;
   width: 600px;
   filter: drop-shadow(0 0 20px black);
+  transition: opacity 1s;
 }
 
 .title {
@@ -73,10 +124,14 @@ $main: #ffe200;
   transform-origin: right;
   text-transform: lowercase;
   text-align: right;
-  padding: 0.2em;
+  margin-bottom: 0.3em;
   justify-content: flex-end;
   line-height: 0.8em;
   text-shadow: rgb(18, 18, 18) 5px 0px 0px, rgb(18, 18, 18) 4.90033px 0.993347px 0px, rgb(18, 18, 18) 4.60531px 1.94709px 0px, rgb(18, 18, 18) 4.12668px 2.82321px 0px, rgb(18, 18, 18) 3.48353px 3.58678px 0px, rgb(18, 18, 18) 2.70151px 4.20736px 0px, rgb(18, 18, 18) 1.81179px 4.6602px 0px, rgb(18, 18, 18) 0.849836px 4.92725px 0px, rgb(18, 18, 18) -0.145998px 4.99787px 0px, rgb(18, 18, 18) -1.13601px 4.86924px 0px, rgb(18, 18, 18) -2.08073px 4.54649px 0px, rgb(18, 18, 18) -2.94251px 4.04248px 0px, rgb(18, 18, 18) -3.68697px 3.37732px 0px, rgb(18, 18, 18) -4.28444px 2.57751px 0px, rgb(18, 18, 18) -4.71111px 1.67494px 0px, rgb(18, 18, 18) -4.94996px 0.7056px 0px, rgb(18, 18, 18) -4.99147px -0.291871px 0px, rgb(18, 18, 18) -4.83399px -1.27771px 0px, rgb(18, 18, 18) -4.48379px -2.2126px 0px, rgb(18, 18, 18) -3.95484px -3.05929px 0px, rgb(18, 18, 18) -3.26822px -3.78401px 0px, rgb(18, 18, 18) -2.4513px -4.35788px 0px, rgb(18, 18, 18) -1.53666px -4.75801px 0px, rgb(18, 18, 18) -0.560763px -4.96845px 0px, rgb(18, 18, 18) 0.437495px -4.98082px 0px, rgb(18, 18, 18) 1.41831px -4.79462px 0px, rgb(18, 18, 18) 2.34258px -4.41727px 0px, rgb(18, 18, 18) 3.17346px -3.86382px 0px, rgb(18, 18, 18) 3.87783px -3.15633px 0px, rgb(18, 18, 18) 4.4276px -2.32301px 0px, rgb(18, 18, 18) 4.80085px -1.39708px 0px, rgb(18, 18, 18) 4.98271px -0.415447px 0px;
+
+  @media (max-width: $br-s) {
+    font-size: 4em;
+  }
 
   &-sidy {
     font-size: 2em;

@@ -1,11 +1,16 @@
 @import 'reset';
-$main: #ffe200;
+@import 'vars';
+
 body {
   font-family: 'Catamaran', sans-serif;
   background-color: #121212;
   color: #f1f1f1;
   font-size: 12px;
   overflow-x: hidden;
+
+  ::selection {
+    background-color: $main;
+  }
 }
 
 ::-webkit-scrollbar {
@@ -21,5 +26,154 @@ body {
 
   &-thumb:hover {
     background: lighten($main, 20%);
+  }
+}
+
+
+.innerhtml {
+  h2 {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+  strong {
+    text-decoration: underline $main;
+  }
+
+  .link {
+    color: #111111;
+    background-color: $main;
+    padding: 0 10px;
+    line-height: 1.2em;
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  .link-gh {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.glitched {
+  position: relative;
+  display: block;
+
+
+  &::before, &::after {
+    width: calc(100% - 1px);
+    content: attr(data-text);
+    position: absolute;
+    width: 100%;
+    top: 0;
+    color: white;
+    background: transparent;
+    overflow: hidden;
+    clip: rect(0, 900px, 0, 0);
+  }
+
+  &::before {
+    left: 2px;
+    text-shadow: 1px 0 blue;
+    animation: noise-anim-2 3s infinite linear alternate-reverse;
+  }
+
+  &::after {
+    left: 1px;
+    text-shadow: -1px 0 $main;
+    animation: noise-anim 3s infinite linear alternate-reverse;
+  }
+}
+
+@keyframes noise-anim {
+  0% {
+    clip: rect(75px, 9999px, 66px, 0)
+  }
+
+  10% {
+    clip: rect(54px, 9999px, 72px, 0)
+  }
+
+  20% {
+    clip: rect(87px, 9999px, 48px, 0)
+  }
+
+  30% {
+    clip: rect(96px, 9999px, 59px, 0)
+  }
+
+  40% {
+    clip: rect(20px, 9999px, 51px, 0)
+  }
+
+  50% {
+    clip: rect(33px, 9999px, 8px, 0)
+  }
+
+  60% {
+    clip: rect(34px, 9999px, 49px, 0)
+  }
+
+  70% {
+    clip: rect(90px, 9999px, 5px, 0)
+  }
+
+  80% {
+    clip: rect(59px, 9999px, 19px, 0)
+  }
+
+  90% {
+    clip: rect(95px, 9999px, 29px, 0)
+  }
+
+  100% {
+    clip: rect(4px, 9999px, 44px, 0)
+  }
+}
+
+
+@keyframes noise-anim-2 {
+  0% {
+    clip: rect(61px, 9999px, 46px, 0)
+  }
+
+  10% {
+    clip: rect(71px, 9999px, 12px, 0)
+  }
+
+  20% {
+    clip: rect(41px, 9999px, 50px, 0)
+  }
+
+  30% {
+    clip: rect(61px, 9999px, 9px, 0)
+  }
+
+  40% {
+    clip: rect(6px, 9999px, 56px, 0)
+  }
+
+  50% {
+    clip: rect(90px, 9999px, 14px, 0)
+  }
+
+  60% {
+    clip: rect(25px, 9999px, 33px, 0)
+  }
+
+  70% {
+    clip: rect(7px, 9999px, 27px, 0)
+  }
+
+  80% {
+    clip: rect(8px, 9999px, 84px, 0)
+  }
+
+  90% {
+    clip: rect(100px, 9999px, 92px, 0)
+  }
+
+  100% {
+    clip: rect(63px, 9999px, 58px, 0)
   }
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Works } from '../works';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'p-menu',
@@ -8,7 +10,7 @@ import { Works } from '../works';
 })
 export class MenuComponent implements OnInit {
   entrance = true;
-  constructor(public works: Works) {
+  constructor(public works: Works, private router: Router, public app: AppComponent) {
   }
 
   ngOnInit() {
@@ -18,9 +20,16 @@ export class MenuComponent implements OnInit {
   }
 
   moveTo(id) {
+    if (id == 'about') this.goToHome()
+    else {
+    if (this.router.routerState.snapshot.url != '/') this.matchUrl(this.router.routerState.snapshot.url, id)
+      else this.scrollTo(id)
+    }
+  }
+
+  scrollTo(id) {
     let targetID = '#' + id;
     const distanceToTop = el => Math.floor(el.getBoundingClientRect().top);
-    //var targetID = (respond) ? respond.getAttribute('href') : this.getAttribute('href');
     const targetAnchor = document.querySelector(targetID);
     if (!targetAnchor) return;
     const originalTop = distanceToTop(targetAnchor);
@@ -32,6 +41,21 @@ export class MenuComponent implements OnInit {
         clearInterval(checkIfDone);
       }
     }, 100);
+  }
+
+  goToHome() {
+    this.router.navigate(['']);
+  }
+
+  toggleMenu() {
+    this.app.menuVisible = !this.app.menuVisible;
+  }
+
+  matchUrl(url, id) {
+    if (url.startsWith("/#")) this.scrollTo(id)
+    else {
+      this.router.navigate(['', id]);
+    }
   }
 
 }
