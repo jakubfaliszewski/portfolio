@@ -8,19 +8,20 @@ export const slider =
           position: 'absolute',
           top: 0,
           left: 0,
+          transform: 'translateX(0)',
           width: '100vw',
           zIndex: -1
         })
       ], { optional: true }),
       query(':enter', [
-        style({ left: '-100%', position: 'fixed' })
+        style({ transform: 'translateX(-100%)', position: 'fixed' })
       ]),
       group([
         query(':leave', [
-          animate('1000ms cubic-bezier(0.65, 0.05, 0.29, 1.03)', style({ left: '100%' }))
+          animate('1000ms cubic-bezier(0.65, 0.05, 0.29, 1.03)', style({ transform: 'translateX(100%)' }))
         ], { optional: true }),
         query(':enter', [
-          animate('1000ms cubic-bezier(0.65, 0.05, 0.29, 1.03)', style({ left: '0%' }))
+          animate('1000ms cubic-bezier(0.65, 0.05, 0.29, 1.03)', style({ transform: 'translateX(0)' }))
         ])
       ])
     ]),
@@ -30,19 +31,20 @@ export const slider =
           position: 'absolute',
           top: 0,
           right: 0,
+          transform: 'translateX(0)',
           width: '100vw',
           zIndex: -1
         })
       ], { optional: true }),
       query(':enter', [
-        style({ right: '-100%', position: 'fixed' })
+        style({ transform: 'translateX(100%)', position: 'fixed' })
       ]),
       group([
         query(':leave', [
-          animate('1000ms cubic-bezier(0.65, 0.05, 0.29, 1.03)', style({ right: '100%' }))
+          animate('1000ms cubic-bezier(0.65, 0.05, 0.29, 1.03)', style({ transform: 'translateX(-100%)' }))
         ], { optional: true }),
         query(':enter', [
-          animate('1000ms cubic-bezier(0.65, 0.05, 0.29, 1.03)', style({ right: '0%' }))
+          animate('1000ms cubic-bezier(0.65, 0.05, 0.29, 1.03)', style({ transform: 'translateX(0)' }))
         ])
       ])
     ]),
@@ -52,19 +54,20 @@ export const slider =
           position: 'absolute',
           top: 0,
           left: 0,
+          transform: 'translateX(0)',
           width: '100vw',
           zIndex: -1
         })
       ], { optional: true }),
       query(':enter', [
-        style({ left: '-100%', position: 'fixed' })
+        style({ transform: 'translateX(-100%)', position: 'fixed' })
       ]),
       group([
         query(':leave', [
-          animate('1000ms cubic-bezier(0.65, 0.05, 0.29, 1.03)', style({ left: '100%' }))
+          animate('1000ms cubic-bezier(0.65, 0.05, 0.29, 1.03)', style({ transform: 'translateX(100%)' }))
         ], { optional: true }),
         query(':enter', [
-          animate('1000ms cubic-bezier(0.65, 0.05, 0.29, 1.03)', style({ left: '0%' }))
+          animate('1000ms cubic-bezier(0.65, 0.05, 0.29, 1.03)', style({ transform: 'translateX(0)' }))
         ])
       ])
     ]),
@@ -74,22 +77,23 @@ export const slider =
           position: 'absolute',
           top: 0,
           right: 0,
+          transform: 'translateX(0)',
           width: '100vw',
           zIndex: -1
         })
       ], { optional: true }),
       query(':enter', [
-        style({ right: '-100%', position: 'fixed' })
+        style({ transform: 'translateX(100%)', position: 'fixed' })
       ]),
       group([
         query(':leave', [
-          animate('1000ms cubic-bezier(0.65, 0.05, 0.29, 1.03)', style({ right: '100%' }))
+          animate('1000ms cubic-bezier(0.65, 0.05, 0.29, 1.03)', style({ transform: 'translateX(-100%)' }))
         ], { optional: true }),
         query(':enter', [
-          animate('1000ms cubic-bezier(0.65, 0.05, 0.29, 1.03)', style({ right: '0%' }))
+          animate('1000ms cubic-bezier(0.65, 0.05, 0.29, 1.03)', style({ transform: 'translateX(0)' }))
         ])
       ])
-    ])
+    ]),
   ]);
 
 //export function slideInAnimation(direction) {
