@@ -1,7 +1,7 @@
 <menu class="menu-container" [class.hidden]="entrance">
   <div class="menu-title">
     <p>Nazywam się</p>
-    <h1 (click)="goToHome()">Jakub Faliszewski</h1>
+    <h1 (click)="goToHome()" [style.transform]="'rotate('+menuRotate+'deg)'">Jakub Faliszewski</h1>
   </div>
   <footer class="footer" [class.visible]="app.menuVisible">
     <button class="hamburger" (click)="toggleMenu()" role="button">

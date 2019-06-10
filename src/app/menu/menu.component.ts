@@ -10,6 +10,7 @@ import { AppComponent } from '../app.component';
 })
 export class MenuComponent implements OnInit {
   entrance = true;
+  menuRotate: number = 0;
   constructor(public works: Works, private router: Router, public app: AppComponent) {
   }
 
@@ -17,6 +18,12 @@ export class MenuComponent implements OnInit {
     window.addEventListener('load', () => {
       this.entrance = false;
     })
+    document.addEventListener('scroll', (e) => {
+      let body = document.querySelector('body');
+      var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (<any>document.documentElement || document.body.parentNode || document.body).scrollTop;
+
+      this.menuRotate = ((scrollTop / body.clientHeight)*100 / 20);
+    });
   }
 
   moveTo(id) {
@@ -49,7 +56,7 @@ export class MenuComponent implements OnInit {
     if (this.router.routerState.snapshot.url != '/') {
       let id = this.router.routerState.snapshot.url;
       let idSliced = id.slice(1, id.length);
-      let targetID = '#' + idSliced;  
+      let targetID = '#' + idSliced;
       window.history.pushState('', '', targetID);
     }
   }
