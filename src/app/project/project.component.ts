@@ -19,7 +19,6 @@ export class ProjectComponent implements OnInit {
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.checkIfWorkExist(params.name);
-      window.scrollBy({ top: -99999, left: 0, behavior: 'smooth' });
     });
   }
 

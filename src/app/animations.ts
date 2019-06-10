@@ -8,6 +8,7 @@ export const slider =
           position: 'absolute',
           top: 0,
           left: 0,
+          overflow: 'hidden',
           transform: 'translateX(0)',
           width: '100vw',
           zIndex: -1
@@ -31,6 +32,7 @@ export const slider =
           position: 'absolute',
           top: 0,
           right: 0,
+          overflow: 'hidden',
           transform: 'translateX(0)',
           width: '100vw',
           zIndex: -1
@@ -54,6 +56,7 @@ export const slider =
           position: 'absolute',
           top: 0,
           left: 0,
+          overflow: 'hidden',
           transform: 'translateX(0)',
           width: '100vw',
           zIndex: -1
@@ -77,6 +80,7 @@ export const slider =
           position: 'absolute',
           top: 0,
           right: 0,
+          overflow: 'hidden',
           transform: 'translateX(0)',
           width: '100vw',
           zIndex: -1

@@ -20,12 +20,11 @@ export class HomeComponent implements OnInit {
     this.calcParallax();
     this.cursorTracker();
     this.titleService.setTitle("Jakub Faliszewski");
-
+    window.scrollBy({ top: -99999, left: 0, behavior: 'smooth' });
     document.addEventListener('scroll', () => {
       if (this.router.routerState.snapshot.url != ('/' || '')) return;
       this.calcParallax();
       let lastHighlight;
-      console.log(document.querySelectorAll('.menu-item a'));
       for (let j = 0; j < this.works.all.length; j++) {
         let id = this.works.all[j].id;
         if (document.querySelector('#' + id).getBoundingClientRect().top < (window.innerHeight / 2))

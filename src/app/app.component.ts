@@ -36,6 +36,14 @@ export class AppComponent {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
 
+  animationStarted($event) {
+    //console.log('Start');
+  }
+
+  animationDone($event) {
+    window.scrollBy({ top: -99999, left: 0, behavior: 'smooth' });
+  }
+
   navigationInterceptor(event: RouterEvent): void {
 
     if (event instanceof NavigationStart) {

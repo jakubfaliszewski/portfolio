@@ -22,7 +22,7 @@ export class MenuComponent implements OnInit {
   moveTo(id) {
     if (id == 'about') this.goToHome()
     else {
-    if (this.router.routerState.snapshot.url != '/') this.matchUrl(this.router.routerState.snapshot.url, id)
+      if (this.router.routerState.snapshot.url != '/') this.matchUrl(this.router.routerState.snapshot.url, id)
       else this.scrollTo(id)
     }
   }
@@ -45,6 +45,13 @@ export class MenuComponent implements OnInit {
 
   goToHome() {
     this.router.navigate(['']);
+    window.scrollBy({ top: -99999, left: 0, behavior: 'smooth' });
+    if (this.router.routerState.snapshot.url != '/') {
+      let id = this.router.routerState.snapshot.url;
+      let idSliced = id.slice(1, id.length);
+      let targetID = '#' + idSliced;  
+      window.history.pushState('', '', targetID);
+    }
   }
 
   toggleMenu() {
@@ -55,6 +62,7 @@ export class MenuComponent implements OnInit {
     if (url.startsWith("/#")) this.scrollTo(id)
     else {
       this.router.navigate(['', id]);
+      window.scrollBy({ top: -99999, left: 0, behavior: 'smooth' });
     }
   }
 
