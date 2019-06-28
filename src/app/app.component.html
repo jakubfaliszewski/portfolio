@@ -1,5 +1,7 @@
 <p-menu></p-menu>
-<main [@routeAnimations]="prepareRoute(outlet)"   (@routeAnimations.start)="animationStarted($event)"
-        (@routeAnimations.done)="animationDone($event)">
+<div class="cursor cursor-small" [class.hover]="isStuck"></div>
+<canvas class="cursor cursor-canvas" resize></canvas>
+<main [@routeAnimations]="prepareRoute(outlet)" (@routeAnimations.start)="animationStarted($event)"
+      (@routeAnimations.done)="animationDone($event)">
   <router-outlet #outlet="outlet"></router-outlet>
 </main>

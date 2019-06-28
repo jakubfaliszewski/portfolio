@@ -8,6 +8,7 @@ import {
   NavigationError,
   RouterOutlet
 } from '@angular/router';
+import * as paper from 'paper';
 import { slider } from './animations';
 
 import smoothscroll from 'smoothscroll-polyfill';
@@ -23,21 +24,123 @@ export class AppComponent {
   loading: boolean = true;
   isHome: boolean = false;
   menuVisible: boolean = false;
-
+  isStuck: boolean = false;
   constructor(private router: Router) {
     router.events.subscribe((event: RouterEvent) => {
       this.navigationInterceptor(event)
     })
     console.info("App is running, yay!");
     console.info("%cHave a nice day, human (ಠ‿↼)", "font-weight: bold");
-
   }
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
 
-  animationStarted($event) {
-    //console.log('Start');
+  ngOnInit() {
+    this.initCursor();
+  }
+
+  initCursor() {
+    // init cursor
+    let clientX = -100;
+    let clientY = -100;
+    const innerCursor = <any>document.querySelector(".cursor-small");
+
+    const init = () => {
+      document.addEventListener("mousemove", e => {
+        clientX = e.clientX;
+        clientY = e.clientY;
+      });
+
+      const render = () => {
+        innerCursor.style.transform = `translate(${clientX}px, ${clientY}px)`;
+
+
+        requestAnimationFrame(render);
+      };
+      requestAnimationFrame(render);
+    };
+
+    init();
+
+    //init canvas
+    let lastX = 0;
+    let lastY = 0;
+    let showCursor = false;
+    let group, fillOuterCursor;
+
+
+    const initCanvas = () => {
+      const canvas = <HTMLCanvasElement>document.querySelector(".cursor-canvas");
+      const shapeBounds = {
+        width: 75,
+        height: 75
+      };
+      paper.setup(canvas);
+      const strokeColor = "#ffe200";
+      const strokeWidth = 2;
+      const segments = 8;
+      const radius = 15;
+      const polygon = new paper.Path.RegularPolygon(
+        new paper.Point(0, 0),
+        segments,
+        radius
+      );
+      polygon.strokeColor = <any>strokeColor;
+      polygon.strokeWidth = strokeWidth;
+      polygon.smooth();
+      group = new paper.Group([polygon]);
+      group.applyMatrix = false;
+
+      const lerp = (a, b, n) => {
+        return (1 - n) * a + n * b;
+      };
+
+      const map = (value, in_min, in_max, out_min, out_max) => {
+        return (
+          ((value - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min
+        );
+      };
+
+  
+      paper.view.onFrame = event => {
+        if (this.isStuck) {
+          polygon.opacity = 0;
+        } else { polygon.opacity = 1; }
+        lastX = lerp(lastX, clientX, 0.2);
+        lastY = lerp(lastY, clientY, 0.2);
+        group.position = new paper.Point(lastX, lastY);
+      }
+    }
+
+    initCanvas();
+  }
+
+  initHover() {
+    let stuckX, stuckY;
+    const initHovers = () => {
+
+      const handleMouseEnter = e => {
+        const navItem = e.currentTarget;
+        const navItemBox = navItem.getBoundingClientRect();
+        stuckX = Math.round(navItemBox.left + navItemBox.width / 2);
+        stuckY = Math.round(navItemBox.top + navItemBox.height / 2);
+        this.isStuck = true;
+      };
+
+      // reset isStuck on mouseLeave
+      const handleMouseLeave = () => {
+        this.isStuck = false;
+      };
+
+      const linkItems = document.querySelectorAll(".link");
+      linkItems.forEach(item => {
+        item.addEventListener("mouseenter", handleMouseEnter);
+        item.addEventListener("mouseleave", handleMouseLeave);
+      });
+    };
+
+    initHovers();
   }
 
   animationDone($event) {
@@ -54,6 +157,7 @@ export class AppComponent {
       setTimeout(() => {
         this.loading = false;
         this.isHome = this.router.routerState.snapshot.url == '/' || this.router.routerState.snapshot.url.startsWith('/#') ? true : false;
+        this.initHover();
       }, 200);
     }
 

@@ -3,8 +3,8 @@
   <div class="project-content">
     <div class="project-buttons">
       <ng-container  *ngFor="let button of work.buttons">
-        <a *ngIf="button.type=='link'" [href]="button.link" class="link-button" target="_blank">{{button.text}}</a>
-        <a *ngIf="button.type=='gplay'" [href]="button.link" class="link-button" target="_blank"><img src="./assets/gplay_logo.png" alt="logo Google Play"/></a>
+        <a *ngIf="button.type=='link'" [href]="button.link" class="link-button link" target="_blank">{{button.text}}</a>
+        <a *ngIf="button.type=='gplay'" [href]="button.link" class="link-button link" target="_blank"><img src="./assets/gplay_logo.png" alt="logo Google Play"/></a>
       </ng-container>
     </div>
     <div class="project-desc innerhtml" [innerHTML]="work.desc">

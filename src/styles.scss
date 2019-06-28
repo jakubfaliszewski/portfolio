@@ -7,9 +7,14 @@ body {
   color: #f1f1f1;
   font-size: 12px;
   overflow-x: hidden;
+  cursor: none;
 
   ::selection {
     background-color: $main;
+  }
+
+  button, a{
+    cursor: none;
   }
 }
 

@@ -1,4 +1,38 @@
 $main: #ffe200;
+
 main {
   overflow: hidden;
+}
+
+
+.cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+
+  &-small {
+    width: 8px;
+    height: 8px;
+    left: -4px;
+    top: -4px;
+    border-radius: 50%;
+    z-index: 11000;
+    background: #ffef00;
+    mix-blend-mode: difference;
+    transition: width 0.3s, height 0.3s, top 0.3s, left 0.3s;
+
+    &.hover {
+      width: 30px;
+      height: 30px;
+      left: -17px;
+      top: -15px;
+    }
+  }
+
+  &-canvas {
+    width: 100vw;
+    height: 100vh;
+    z-index: 12000;
+  }
 }

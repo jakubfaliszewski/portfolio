@@ -22,7 +22,7 @@ export class MenuComponent implements OnInit {
       let body = document.querySelector('body');
       var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (<any>document.documentElement || document.body.parentNode || document.body).scrollTop;
 
-      this.menuRotate = ((scrollTop / body.clientHeight)*100 / 20);
+      this.menuRotate = ((scrollTop / body.clientHeight)*100 / 40);
     });
   }
 

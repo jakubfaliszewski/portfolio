@@ -1,10 +1,10 @@
 <menu class="menu-container" [class.hidden]="entrance">
   <div class="menu-title">
     <p>Nazywam się</p>
-    <h1 (click)="goToHome()" [style.transform]="'rotate('+menuRotate+'deg)'">Jakub Faliszewski</h1>
+    <h1 (click)="goToHome()" [style.transform]="'rotate('+menuRotate+'deg)'" class="link">Jakub Faliszewski</h1>
   </div>
   <footer class="footer" [class.visible]="app.menuVisible">
-    <button class="hamburger" (click)="toggleMenu()" role="button">
+    <button class="link hamburger" (click)="toggleMenu()" role="button">
       <span></span>
       <span></span>
       <span></span>
@@ -13,23 +13,23 @@
       <p class="footer-title">Kontakt</p>
       <ul class="footer-list">
         <ng-container *ngFor="let w of works.all; index as i">
-          <li *ngIf="i==0" class="menu-item"><a (click)="moveTo(w.id)">{{w.title}}</a></li>
+          <li *ngIf="i==0" class="menu-item link"><a (click)="moveTo(w.id)">{{w.title}}</a></li>
         </ng-container>
-        <li>  <a href="mailto:jfaliszewski@interia.pl">jfaliszewski@interia.pl</a></li>
+        <li> <a  class="link" href="mailto:jfaliszewski@interia.pl">jfaliszewski@interia.pl</a></li>
       </ul>
     </div>
     <div class="footer-column">
       <p class="footer-title">Realizacje</p>
       <ul class="footer-list">
         <ng-container *ngFor="let w of works.all; index as i">
-          <li *ngIf="i>0" class="menu-item"><a (click)="moveTo(w.id)">{{w.title}}</a></li>
+          <li *ngIf="i>0" class="menu-item link"><a (click)="moveTo(w.id)">{{w.title}}</a></li>
         </ng-container>
-        <hr />
-        <li><a href="https://github.com/jakubfaliszewski?tab=repositories">repozytoria github</a></li>
+        <hr /> 
+        <li><a class="link" href="https://github.com/jakubfaliszewski?tab=repositories">repozytoria github</a></li>
       </ul>
     </div>
   </footer>
-  <button (click)="goToHome()" class="menu-back-button" [class.hidden]='app.isHome' role="button">
-    <svg class="icon" height="512" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M695.125333 263.850667 447.715556 511.203556 695.125333 759.637333C716.458667 781.084444 716.458667 815.843556 695.125333 837.290667 673.792 858.680889 639.203556 858.680889 617.870222 837.290667L343.608889 561.891556C338.545778 559.331556 333.539556 556.600889 329.272889 552.391111 317.952 541.070222 313.116444 526.051556 313.799111 511.260444 313.116444 496.355556 317.952 481.28 329.272889 469.902222 333.994667 465.180444 339.456 461.937778 345.144889 459.320889L617.870222 186.595556C639.203556 165.262222 673.792 165.262222 695.125333 186.595556 716.458667 207.928889 716.458667 242.517333 695.125333 263.850667Z" /></svg>
+  <button (click)="goToHome()" class="link menu-back-button" [class.hidden]='app.isHome' role="button">
+    <svg class="icon" height="512"  viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M695.125333 263.850667 447.715556 511.203556 695.125333 759.637333C716.458667 781.084444 716.458667 815.843556 695.125333 837.290667 673.792 858.680889 639.203556 858.680889 617.870222 837.290667L343.608889 561.891556C338.545778 559.331556 333.539556 556.600889 329.272889 552.391111 317.952 541.070222 313.116444 526.051556 313.799111 511.260444 313.116444 496.355556 317.952 481.28 329.272889 469.902222 333.994667 465.180444 339.456 461.937778 345.144889 459.320889L617.870222 186.595556C639.203556 165.262222 673.792 165.262222 695.125333 186.595556 716.458667 207.928889 716.458667 242.517333 695.125333 263.850667Z" /></svg>
   </button>
 </menu>

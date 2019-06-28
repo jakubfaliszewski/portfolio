@@ -88,7 +88,7 @@
           width: 100vw;
           color: $main;
           -webkit-text-stroke: 2px #121212;
-          cursor: pointer;
+          /*cursor: pointer;*/
           transition: opacity 0.4s, transform 0.4s;
           opacity: 0.5;
           transform-origin: left;
@@ -222,7 +222,7 @@
           box-sizing: border-box;
           position: relative;
           font-family: inherit;
-          cursor: pointer;
+          /*cursor: pointer;*/
           color: #101010;
           text-decoration: none;
           transform-origin: left;
