@@ -37,11 +37,28 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.initCursor();
+    function is_touch_device() {
+      var prefixes = ' -webkit- -moz- -o- -ms- '.split(' ');
+      var mq = function (query) {
+        return window.matchMedia(query).matches;
+      }
+
+      if (('ontouchstart' in window) || (<any>window).DocumentTouch) {
+        return true;
+      }
+
+      // include the 'heartz' as a way to have a non matching MQ to help terminate the join
+      // https://git.io/vznFH
+      var query = ['(', prefixes.join('touch-enabled),('), 'heartz', ')'].join('');
+      return mq(query);
+    }
+    if (!is_touch_device())
+      this.initCursor();
   }
 
   initCursor() {
     // init cursor
+    document.querySelector("body").classList.add('nocursor');
     let clientX = -100;
     let clientY = -100;
     const innerCursor = <any>document.querySelector(".cursor-small");
@@ -54,8 +71,6 @@ export class AppComponent {
 
       const render = () => {
         innerCursor.style.transform = `translate(${clientX}px, ${clientY}px)`;
-
-
         requestAnimationFrame(render);
       };
       requestAnimationFrame(render);
@@ -102,7 +117,7 @@ export class AppComponent {
         );
       };
 
-  
+
       paper.view.onFrame = event => {
         if (this.isStuck) {
           polygon.opacity = 0;
