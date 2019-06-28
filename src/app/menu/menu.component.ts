@@ -16,7 +16,9 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     window.addEventListener('load', () => {
+      setTimeout(() => {
       this.entrance = false;
+      }, 100)
     })
     document.addEventListener('scroll', (e) => {
       let body = document.querySelector('body');

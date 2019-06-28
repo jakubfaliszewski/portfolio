@@ -31,12 +31,6 @@ export class AppComponent {
     })
     console.info("App is running, yay!");
     console.info("%cHave a nice day, human (ಠ‿↼)", "font-weight: bold");
-  }
-  prepareRoute(outlet: RouterOutlet) {
-    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
-  }
-
-  ngOnInit() {
     function is_touch_device() {
       var prefixes = ' -webkit- -moz- -o- -ms- '.split(' ');
       var mq = function (query) {
@@ -52,8 +46,20 @@ export class AppComponent {
       var query = ['(', prefixes.join('touch-enabled),('), 'heartz', ')'].join('');
       return mq(query);
     }
+    window.addEventListener('load', () => {
     if (!is_touch_device())
       this.initCursor();
+
+    });
+  }
+
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+  }
+
+  ngOnInit() {
+    
+
   }
 
   initCursor() {

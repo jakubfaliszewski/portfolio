@@ -15,6 +15,10 @@ body {
   &.nocursor {
     cursor: none;
 
+    .cursor{
+      display: block;
+    }
+
     button, a {
       cursor: none;
     }
