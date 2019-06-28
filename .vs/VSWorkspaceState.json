@@ -5,10 +5,9 @@
     "\\src\\app",
     "\\src\\app\\home",
     "\\src\\app\\menu",
-    "\\src\\app\\page-not-found",
     "\\src\\app\\project",
     "\\src\\assets"
   ],
-  "SelectedNode": "\\src\\app\\menu\\menu.component.ts",
+  "SelectedNode": "\\src\\app\\app.component.ts",
   "PreviewInSolutionExplorer": false
 }

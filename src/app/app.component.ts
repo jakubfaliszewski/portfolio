@@ -81,16 +81,11 @@ export class AppComponent {
     //init canvas
     let lastX = 0;
     let lastY = 0;
-    let showCursor = false;
-    let group, fillOuterCursor;
+    let group;
 
 
     const initCanvas = () => {
       const canvas = <HTMLCanvasElement>document.querySelector(".cursor-canvas");
-      const shapeBounds = {
-        width: 75,
-        height: 75
-      };
       paper.setup(canvas);
       const strokeColor = "#ffe200";
       const strokeWidth = 2;
@@ -111,17 +106,14 @@ export class AppComponent {
         return (1 - n) * a + n * b;
       };
 
-      const map = (value, in_min, in_max, out_min, out_max) => {
-        return (
-          ((value - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min
-        );
-      };
-
-
       paper.view.onFrame = event => {
         if (this.isStuck) {
-          polygon.opacity = 0;
-        } else { polygon.opacity = 1; }
+          polygon.bounds.width = 10;
+          polygon.bounds.height = 10;
+        } else {
+          polygon.bounds.width = 30;
+          polygon.bounds.height = 30;
+        }
         lastX = lerp(lastX, clientX, 0.2);
         lastY = lerp(lastY, clientY, 0.2);
         group.position = new paper.Point(lastX, lastY);
