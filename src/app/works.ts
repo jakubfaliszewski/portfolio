@@ -1,7 +1,7 @@
 export class Works {
   all = [
     {
-      title: 'o, ja',
+      title: 'To ja',
       id: 'about',
       bg: 'me.png',
       bg2: 'me2.png',
@@ -12,7 +12,7 @@ export class Works {
       bg: 'gingerbarber.png',
       bg2: 'gingerbarber2.png',
       screens: 'gingerbarber_screens.png',
-      desc: "<p>Strona stworzona dla <strong>krakowskiego zakładu barberskiego</strong>. Razem we współpracy z <strong>Miaunek Design</strong>, twórczynią projektu graficznego, utworzyliśmy pin-up'ową one-page'a dla popularnych barberek.</p>",
+      desc: "<p>Strona stworzona dla <strong>krakowskiego zakładu barberskiego</strong>. Razem we współpracy z <strong>Miaunek Design</strong>, twórczynią projektu graficznego, utworzyliśmy pin-up'owego one-page'a dla popularnych barberek.</p>",
       buttons: [{
         type: 'link',
         text: 'demo',

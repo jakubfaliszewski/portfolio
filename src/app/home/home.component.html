@@ -2,8 +2,7 @@
   <section class="main-section" *ngFor="let w of works.all ; index as i" [id]="w.id">
     <div class="title-container" [style.transform]="cursor.transformDistant"><h1 class="title glitched" [style.transform]="'translateY('+titleTransform[i]+'px)'" [attr.data-text]="w.title">{{w.title}}</h1></div>
     <div *ngIf="i==0" class="about-desc">
-      <p>To ja. 21-letni front-end dev.</p>
-      <p>A ja to między innymi:</p>
+      <p>21-letni Front End Developer</p>
       <hr />
       <ul>
         <li>kawa</li>
@@ -11,7 +10,6 @@
         <li>Sass</li>
         <li>Ionic</li>
         <li>Photoshop</li>
-        <li>kawa</li>
       </ul>
     </div>
     <button role="button" *ngIf="i>0" class="main-button link" (click)="showWork(w.id)" [style.transform]="cursor.transformDistant">
